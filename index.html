@@ -155,7 +155,7 @@
                     </ul>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success">Search</button>
+            <button type="submit" class="btn btn-success" id="search-btn">Search</button>
         </form>
         <h2 class="pb-2 border-bottom text-center">Items</h2>
         <div class="row row-cols-1 row-cols-md-3 mb-3 m-2 text-center">
@@ -182,6 +182,11 @@
     <script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script>
+        document.getElementById("search-btn").addEventListener("click", () => {
+            alert("this is test alert laishfi g")
+        })
+    </script>
 
 </body>
 
