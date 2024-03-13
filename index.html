@@ -184,7 +184,16 @@
         crossorigin="anonymous"></script>
     <script>
         document.getElementById("search-btn").addEventListener("click", () => {
-            alert("this is test alert laishfi g")
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://script.google.com/macros/s/AKfycbxOHBYDEtXsSiAMLxpm_IW1DO6A6Qffh-kqDnvhD4o/dev", true);
+            xhr.setRequestHeader("Access-Control-Allow-Origin", "*")
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    alert(xhr.responseText);
+                }
+            }
+
+            xhr.send();
         })
     </script>
 
