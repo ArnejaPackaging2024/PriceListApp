@@ -122,27 +122,26 @@
     <main>
         <form class="card p-1 m-2">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" class="form-control border-3" id="search" placeholder="Search">
             </div>
-            <div class="input-group">
-                <div class="dropdown m-2">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="true">
-                        Category
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item">FG Items</li>
-                        <li class="dropdown-item">RM Items</li>
-                        <li class="dropdown-item">Bottles</li>
-                        <li class="dropdown-item">Jars</li>
-                        <li class="dropdown-item">Cans</li>
-                        <li class="dropdown-item">Caps</li>
-                        <li class="dropdown-item">Handle</li>
-                        <li class="dropdown-item">Handles+Caps</li>
-                        <li class="dropdown-item">Seals</li>
-                    </ul>
-                </div>
-                <div class="dropdown m-2">
+            <!-- <div class="dropdown m-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="true">
+                    Category
+                </button>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item">FG Items</li>
+                    <li class="dropdown-item">RM Items</li>
+                    <li class="dropdown-item">Bottles</li>
+                    <li class="dropdown-item">Jars</li>
+                    <li class="dropdown-item">Cans</li>
+                    <li class="dropdown-item">Caps</li>
+                    <li class="dropdown-item">Handle</li>
+                    <li class="dropdown-item">Handles+Caps</li>
+                    <li class="dropdown-item">Seals</li>
+                </ul>
+            </div> -->
+            <!-- <div class="dropdown m-2">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="true">
                         Season
@@ -153,7 +152,34 @@
                         <li class="dropdown-item">On Order</li>
                         <li class="dropdown-item">Any Other</li>
                     </ul>
-                </div>
+                </div> -->
+            <div class="input-group">
+                <select class="form-select form-select-sm bg-secondary text-white p-2 m-2" id="category"
+                    style="width: 100px;">
+                    <option selected>Category</option>
+                    <option value="FG Items">FG Items</option>
+                    <option value="RM Items">RM Items</option>
+                    <option value="Bottles">Bottles</option>
+                    <option value="Jars">Jars</option>
+                    <option value="Cans">Cans</option>
+                    <option value="Caps">Caps</option>
+                    <option value="Handles">Handles</option>
+                    <option value="Handle+Cap">Handle+Cap</option>
+                    <option value="Seals">Seals</option>
+                    <option value="Preforms">Preforms</option>
+                    <option value="Resin">Resin</option>
+                    <option value="Master Batch">Master Batch</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <select class="form-select form-select-sm bg-secondary text-white p-2 m-2" id="season"
+                    style="width: 100px;">
+                    <option selected>Season</option>
+                    <option value="Regular">Regular</option>
+                    <option value="Peak">Peak</option>
+                    <option value="On Order">On Order</option>
+                    <option value="Any Other">Any Other</option>
+                </select>
             </div>
             <button type="submit" class="btn btn-success" id="search-btn">Search</button>
         </form>
@@ -184,16 +210,29 @@
         crossorigin="anonymous"></script>
     <script>
         document.getElementById("search-btn").addEventListener("click", () => {
+            let search = document.getElementById("search").value;
+            let category = document.getElementById("category").value;
+            let season = document.getElementById("season").value;
+            category = category === "Category" ? "" : category;
+            season = season === "Season" ? "" : season;
+            let obj = {
+                search: search,
+                season: season,
+                category: category
+            }
             const xhr = new XMLHttpRequest();
-            xhr.open("GET", "https://script.google.com/macros/s/AKfycbxOHBYDEtXsSiAMLxpm_IW1DO6A6Qffh-kqDnvhD4o/dev", true);
-            xhr.setRequestHeader("Access-Control-Allow-Origin", "*")
+            xhr.open("POST", "https://script.google.com/macros/s/AKfycbzJl75vl6cU2QOPYgXpptKmZaKwszoF7Tfz_asikRMngyyIYVQ22P7dCtxSBpNl31m7/exec");
+            // xhr.open()
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Accept", "*/*");
+            xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
             xhr.onreadystatechange = () => {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     alert(xhr.responseText);
                 }
             }
 
-            xhr.send();
+            xhr.send(JSON.stringify(obj));
         })
     </script>
 
