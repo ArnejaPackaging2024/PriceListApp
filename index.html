@@ -180,36 +180,9 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script>
-        document.getElementById("search-btn").addEventListener("click", () => {
-            let search = document.getElementById("search").value;
-            let category = document.getElementById("category").value;
-            let season = document.getElementById("season").value;
-            category = category === "Category" ? "" : category;
-            season = season === "Season" ? "" : season;
-            let obj = {
-                search: search,
-                season: season,
-                category: category
-            };
-
-            let url = "https://script.google.com/macros/s/AKfycbzJl75vl6cU2QOPYgXpptKmZaKwszoF7Tfz_asikRMngyyIYVQ22P7dCtxSBpNl31m7/exec"
-            const xhr = new XMLHttpRequest();
-            xhr.open("GET", `${url}?${encodeURIComponent(JSON.stringify(obj))}`, true);
-
-            xhr.setRequestHeader("Content-Type", "application/json");
-            // xhr.setRequestHeader("Accept", "*/*");
-            xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-            // xhr.setRequestHeader("Access-Control-Allow-Methods", "*");
-            // xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    alert(xhr.responseText);
-                }
-            }
-
-            console.log(`${url}?${encodeURIComponent(JSON.stringify(obj))}`);
-            xhr.send();
-        })
+        document.onload = () => {
+            window.location.replace("https://script.google.com/macros/s/AKfycbz34kajaPc9NdPA8Y867p6FXuZBoWc4tiGL1pLKRTdp/dev") ;
+        }
     </script>
 
 </body>
