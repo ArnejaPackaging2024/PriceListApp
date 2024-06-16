@@ -118,7 +118,7 @@
     <link href="https://getbootstrap.com/docs/5.3/examples/features/features.css" rel="stylesheet">
 </head>
 
-<body>
+<body onload="send()">
     <main>
         <div class="card p-1 m-2">
             <div class="input-group">
@@ -180,7 +180,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script>
-        document.onload = () => {
+        function send() {
             window.location.href = "https://script.google.com/macros/s/AKfycbz34kajaPc9NdPA8Y867p6FXuZBoWc4tiGL1pLKRTdp/dev" ;
         }
     </script>
