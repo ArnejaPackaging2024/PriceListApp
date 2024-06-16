@@ -183,7 +183,9 @@
         crossorigin="anonymous"></script>
     <script>
         function send() {
-            window.location.href = "https://script.google.com/macros/s/AKfycbz34kajaPc9NdPA8Y867p6FXuZBoWc4tiGL1pLKRTdp/dev" ;
+            let id = window.location.search.split("?")[1].split("=")[1] ;
+            console.log(id) ;
+            window.location.href = `https://script.google.com/macros/s/AKfycbwxB4kIfZcvTm95ucR9ItzdBvqC2Pi5XwjWqUw07Gcji8m51VwPSyTr4swclbEtBARA/exec?id=${id}` ;
         }
     </script>
 
